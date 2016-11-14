@@ -1,7 +1,18 @@
-@extends('layouts.app')
+@extends('master.wireframe')
+
+@section('head')
+
+@stop
+
+@section('header')
+    @include('master.header')
+@endsection
 
 @section('content')
 <div class="container">
+
+    @include('master.notification')
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -67,4 +78,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('footer')
+    @include('master.footer')
 @endsection

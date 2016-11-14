@@ -1,14 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
-    protected $connection = 'another';
+
+    protected $connection = 'core';
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'firstname', 'lastname', 'dateofbirth', 'gender'
     ];
 
     /**
@@ -27,4 +29,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAll()
+    {
+        return static::all();
+    }
+
+    public function findUser($id)
+    {
+        return static::find($id);
+    }
+
+    public function deleteUser($id)
+    {
+        return static::find($id)->delete();
+    }
+
 }
